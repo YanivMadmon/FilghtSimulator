@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FilghtSimulatorApp
+namespace FilghtSimulatorApp.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Joystick.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Joystick : UserControl
     {
-        public MainWindow()
+        public Joystick()
         {
             InitializeComponent();
-        }
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
         }
     }
 }
