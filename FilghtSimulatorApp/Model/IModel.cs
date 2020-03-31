@@ -8,6 +8,17 @@ namespace FilghtSimulatorApp.Model
 {
     interface IModel
     {
+        void connect(string ip, int port);
+        void disconnect();
+        void start();
 
-    }
+        string IndicatedHeadingDeg {get;set;}
+        string GpsIndicatedVerticalSpeed {get;set;}
+        string GpsIndicatedGroundSpeedKt {get;set;}
+        string AirspeedIndicatorIndicatedSpeedKt { get; set; }
+        string GpsIndicatedAltitudeFt { get; set; }
+        string AttitudeIndicatorInternalRollDeg { get; set; }
+        string AttitudeIndicatorInternalPitchDeg { get; set; }
+        string AltimeterIndicatedAltitudeFt {get;set;}
+}
 }
