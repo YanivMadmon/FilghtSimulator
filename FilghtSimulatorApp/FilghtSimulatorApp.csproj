@@ -70,6 +70,9 @@
     <Compile Include="Views\ViewControl.xaml.cs">
       <DependentUpon>ViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewData1.xaml.cs">
+      <DependentUpon>ViewData1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewMap.xaml.cs">
       <DependentUpon>ViewMap.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewData1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,9 +14,15 @@
             <ColumnDefinition Width="178*"/>
             <ColumnDefinition Width="575*"/>
         </Grid.ColumnDefinitions>
+
         <Viewbox HorizontalAlignment="Left" Height="205" VerticalAlignment="Top" Width="266" Margin="310.6,200,-1.4,0" Grid.Column="2">
             <Views:ViewControl Height="465" Width="627"></Views:ViewControl>
         </Viewbox>
-        <Views:ViewMap Grid.ColumnSpan="3" Margin="-20,-10,256.6,10"></Views:ViewMap>
+        <Viewbox HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="515" Margin="10,-10,0,0" Grid.ColumnSpan="3">
+            <Views:ViewMap Margin="0,0,0,0" Height="556" Width="664"></Views:ViewMap>
+        </Viewbox>
+        <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="165" Margin="315.6,23,0,0" VerticalAlignment="Top" Width="250">
+            <Views:ViewData1></Views:ViewData1>
+        </Viewbox>
     </Grid>
 </Window>
