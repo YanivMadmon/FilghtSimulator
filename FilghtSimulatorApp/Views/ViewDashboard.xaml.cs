@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FilghtSimulatorApp.ViewModels;
+using FilghtSimulatorApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,18 @@ using System.Windows.Shapes;
 namespace FilghtSimulatorApp.Views
 {
     /// <summary>
-    /// Interaction logic for ViewData1.xaml
+    /// Interaction logic for ViewDashboard.xaml
     /// </summary>
-    public partial class ViewData1 : UserControl
+    public partial class ViewDashboard : UserControl
     {
-        public ViewData1()
-        {
-            InitializeComponent();
+        private DashboardVM vm;
+        public ViewDashboard()
+        {          
+                InitializeComponent();
+                vm = new DashboardVM(new myModel(new myTelnetClient()));
+                DataContext = vm;
+            }
         }
+
     }
 }

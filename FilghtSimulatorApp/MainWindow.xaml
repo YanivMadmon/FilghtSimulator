@@ -22,7 +22,7 @@
             <Views:ViewMap Margin="0,0,0,0" Height="556" Width="664"></Views:ViewMap>
         </Viewbox>
         <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="165" Margin="315.6,23,0,0" VerticalAlignment="Top" Width="250">
-            <Views:ViewData1></Views:ViewData1>
+            <Views:ViewDashboard></Views:ViewDashboard>
         </Viewbox>
     </Grid>
 </Window>

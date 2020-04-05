@@ -64,6 +64,7 @@
     <Compile Include="Model\INotifyPropertyChanged .cs" />
     <Compile Include="Model\ITelnetClient.cs" />
     <Compile Include="Model\myModel.cs" />
+    <Compile Include="Model\myTelnetClient .cs" />
     <Compile Include="ViewModels\DashboardVM.cs" />
     <Compile Include="Views\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
@@ -71,8 +72,8 @@
     <Compile Include="Views\ViewControl.xaml.cs">
       <DependentUpon>ViewControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewData1.xaml.cs">
-      <DependentUpon>ViewData1.xaml</DependentUpon>
+    <Compile Include="Views\ViewDashboard.xaml.cs">
+      <DependentUpon>ViewDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewMap.xaml.cs">
       <DependentUpon>ViewMap.xaml</DependentUpon>
@@ -97,7 +98,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ViewData1.xaml">
+    <Page Include="Views\ViewDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
