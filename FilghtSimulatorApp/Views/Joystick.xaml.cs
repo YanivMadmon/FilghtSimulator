@@ -26,11 +26,12 @@ namespace FilghtSimulatorApp.Views
         private string xstring;
         private string ystring;
 
-        public string xString { 
+        public string xString
+        {
             get { return this.xstring; }
             set
             {
-                if(this.xstring != value)
+                if (this.xstring != value)
                 {
                     this.xstring = value;
                     this.NotifyPropertyChanged("xString");
@@ -48,8 +49,8 @@ namespace FilghtSimulatorApp.Views
                     this.NotifyPropertyChanged("yString");
                 }
             }
-        
-    }
+
+        }
 
         public Joystick()
         {
@@ -66,7 +67,7 @@ namespace FilghtSimulatorApp.Views
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-        public void centerKnob_Completed(object sender , EventArgs e) { }
+        public void centerKnob_Completed(object sender, EventArgs e) { }
 
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
@@ -107,7 +108,7 @@ namespace FilghtSimulatorApp.Views
             xString = "0.00";
             yString = "0.00";
         }
-        public void  normal()
+        public void normal()
         {
             double radKn = (Base.Width / 2) - (KnobBase.Width / 2);
             double x = knobPosition.X / radKn;
