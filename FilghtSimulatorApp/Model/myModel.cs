@@ -191,7 +191,6 @@ namespace FilghtSimulatorApp.Model
             }
         }
 
-
         public void NotifyPropertyChanged(string propName) {
             if (this.PropertyChanged != null)
             {
