@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FilghtSimulatorApp"
+        xmlns:Views ="clr-namespace:FilghtSimulatorApp.Views"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="178*"/>
+            <ColumnDefinition Width="575*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox HorizontalAlignment="Left" Height="205" VerticalAlignment="Top" Width="266" Margin="310.6,200,-1.4,0" Grid.Column="2">
+            <Views:ViewControl Height="465" Width="627"></Views:ViewControl>
+        </Viewbox>
+        <Views:ViewMap Grid.ColumnSpan="3" Margin="-20,-10,256.6,10"></Views:ViewMap>
     </Grid>
 </Window>

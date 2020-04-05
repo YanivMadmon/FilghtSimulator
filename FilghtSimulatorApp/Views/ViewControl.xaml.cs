@@ -12,17 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
-namespace FilghtSimulatorApp.View
+
+namespace FilghtSimulatorApp.Views
 {
     /// <summary>
-    /// Interaction logic for Joystick.xaml
+    /// Interaction logic for ViewControl.xaml
     /// </summary>
-    public partial class Joystick : UserControl
+    public partial class ViewControl : UserControl
     {
-        public Joystick()
+        public ViewControl()
         {
             InitializeComponent();
+            DataContext = this.Joy;
         }
+
     }
+
 }

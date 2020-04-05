@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="FilghtSimulatorApp.Views.ViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FilghtSimulatorApp.Views"
+             mc:Ignorable="d" Height="490" Width="599.85">
+    <Grid Height="490" VerticalAlignment="Top" Margin="40,0,40,-0.4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="188*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="235*"/>
+        </Grid.RowDefinitions>
+        <Slider x:Name="Aslider" HorizontalAlignment="Left" Margin="93,173.2,0,0" VerticalAlignment="Top" Height="38" Width="357" Grid.Row="2" Maximum="1" Minimum="-1"/>
+        <Slider x:Name="Tslider" HorizontalAlignment="Left" Margin="-120,184,0,0" VerticalAlignment="Top" Height="72" Width="347" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Maximum="1" Value="-1">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.424"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Viewbox HorizontalAlignment="Left" Height="314" Margin="116,68,0,0" VerticalAlignment="Top" Width="334" Grid.RowSpan="3" >
+            <local:Joystick x:Name="Joy"></local:Joystick>
+        </Viewbox>
+        <TextBlock x:Name="Xvalue" HorizontalAlignment="Left" Margin="400,0,0,164.8" TextWrapping="Wrap" Text="{Binding xString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="110" FontWeight="Bold" Foreground="#FFF70E0E" />
+        <TextBlock x:Name="Throttle" HorizontalAlignment="Left" Margin="18,7,0,0" TextWrapping="Wrap" Text="Throttle" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" FontSize="20">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.68"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="Elevator" HorizontalAlignment="Left" Margin="444,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="20" Grid.Row="1" Grid.RowSpan="2">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.977"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform><Run Text="Elevator"/><LineBreak/><Run Text="   &lt;--&gt;"/></TextBlock>
+        <TextBlock x:Name="Rudder" HorizontalAlignment="Left" Margin="246,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="20">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.018"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform><Run Text="Rudder"/><LineBreak/><Run Text=" &lt;--&gt;"/></TextBlock>
+        <TextBlock x:Name="Aileron" HorizontalAlignment="Left" Margin="242,200.2,0,0" TextWrapping="Wrap" Text="Aileron" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="2" FontSize="20">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.511"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="Yvalue" HorizontalAlignment="Left" Margin="445,0,-15,61.8" TextWrapping="Wrap" Text="{Binding yString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="90" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Foreground="#FFF31010" >
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.485"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="value_th" HorizontalAlignment="Left" Margin="-10,0,0,119.6" TextWrapping="Wrap" Text="{Binding ElementName= Tslider,StringFormat=N2,Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="110" FontWeight="Bold" Foreground="#FFF70E0E" Grid.Row="2" RenderTransformOrigin="0.5,0.5"  >
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.626"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="value_ail" HorizontalAlignment="Left" Margin="105,0,0,24.6" TextWrapping="Wrap" Text="{Binding ElementName= Aslider,Path=Value,StringFormat=N2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="110" FontWeight="Bold" Foreground="#FFF70E0E" Grid.Row="2" />
+    </Grid>
+</UserControl>
