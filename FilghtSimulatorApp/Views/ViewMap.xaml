@@ -7,8 +7,9 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
-        <m:Map Margin="0,0,0,0" CredentialsProvider ="Ap-cFxV7SRjn5ZpFXU9QqJ5ryxkfd8uJWnM5vMNlCjcqp86nLWboG-ef1mN5iRe5">
+        <m:Map Margin="0,0,0,0" CredentialsProvider ="AnwUTaQxArPtFK-I4MIkjBHQDGbcg8l2x9dx8gtkb07ot8VctCQORU2x1NB6cQVz">
             <m:Pushpin Location="5,20"></m:Pushpin>
         </m:Map>
     </Grid>
