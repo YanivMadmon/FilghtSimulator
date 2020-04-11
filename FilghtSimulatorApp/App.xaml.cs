@@ -26,13 +26,14 @@ namespace FlightSimulatorApp
             IModel model = new myModel(new myTelnetClient());
             MainViewModel = new MainViewModel(model);
             model.connect("127.0.0.1",5402);
-
+            
             // Create the startup window
             MainWindow wnd = new MainWindow();
             // Do stuff here, e.g. to the window
             wnd.Title = "FlightGear Simulator";
             // Show the window
             wnd.Show();
+            model.start();
         }
     }
 }

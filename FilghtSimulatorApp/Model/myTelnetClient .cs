@@ -19,6 +19,7 @@ namespace FilghtSimulatorApp.Model
         {
             clientSocket = new TcpClient();
             clientSocket.Connect(ip, port);
+            Console.WriteLine("connect");
             sw = new StreamWriter(clientSocket.GetStream());
             sr = new StreamReader(clientSocket.GetStream());
         }

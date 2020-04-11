@@ -53,7 +53,8 @@ namespace FilghtSimulatorApp.Model
                     foreach (string s in nativs)
                     {
                         mut.WaitOne();
-                        telnetClient.write("get" + s + "\n");
+                        Console.WriteLine("get " + s + "\n");
+                        telnetClient.write("get " + s + "\n");
 
                         switch (s)
                         {
@@ -87,8 +88,10 @@ namespace FilghtSimulatorApp.Model
 
                             case "/instrumentation/altimeter/indicated-altitude-ft":
                                 altimeterIndicatedAltitudeFt = telnetClient.read();
+                                Console.WriteLine(altimeterIndicatedAltitudeFt);
                                 break;
                         }
+                        
                         mut.ReleaseMutex();
                     }
 
