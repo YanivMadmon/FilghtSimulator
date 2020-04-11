@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FilghtSimulatorApp.Model
 {
-    interface INotifyPropertyChanged
+    public interface INotifyPropertyChanged
     {
         event PropertyChangedEventHandler PropertyChanged;
     }

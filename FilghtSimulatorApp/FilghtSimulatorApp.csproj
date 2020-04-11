@@ -63,10 +63,10 @@
     <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\INotifyPropertyChanged .cs" />
     <Compile Include="Model\ITelnetClient.cs" />
-    <Compile Include="Model\MainTemp.cs" />
     <Compile Include="Model\myModel.cs" />
     <Compile Include="Model\myTelnetClient .cs" />
     <Compile Include="ViewModels\DashboardVM.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>

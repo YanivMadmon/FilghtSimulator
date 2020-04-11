@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FilghtSimulatorApp.Model
 {
-    class myTelnetClient : ITelnetClient
+    public class myTelnetClient : ITelnetClient
     {
         private TcpClient clientSocket;
         private StreamWriter sw;
@@ -25,6 +25,8 @@ namespace FilghtSimulatorApp.Model
 
         public void disconnect()
         {
+            sw.Close();
+            sr.Close();
             clientSocket.Close();
         }
 

@@ -11,7 +11,7 @@ namespace FilghtSimulatorApp.ViewModels
 {
 
 
-     class DashboardVM : INotifyPropertyChanged
+     public class DashboardVM : INotifyPropertyChanged
     {
         private IModel model;
         public event PropertyChangedEventHandler PropertyChanged;

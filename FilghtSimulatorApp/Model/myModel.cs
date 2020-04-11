@@ -13,6 +13,7 @@ namespace FilghtSimulatorApp.Model
         ITelnetClient telnetClient;
         volatile Boolean stop;
         public event PropertyChangedEventHandler PropertyChanged;
+        Mutex mut;
 
         private string indicatedHeadingDeg;
         private string gpsIndicatedGroundSpeedKt;
@@ -23,7 +24,7 @@ namespace FilghtSimulatorApp.Model
         private string attitudeIndicatorInternalPitchDeg;
         private string altimeterIndicatedAltitudeFt;
 
-        public myModel(ITelnetClient telnetClient) { this.telnetClient = telnetClient; this.stop = false; }
+        public myModel(ITelnetClient telnetClient) { this.telnetClient = telnetClient; this.stop = false; this.mut = new Mutex(); }
         public void connect(string ip, int port) {
             this.telnetClient.connect(ip, port);
             this.stop = false;
@@ -51,7 +52,9 @@ namespace FilghtSimulatorApp.Model
                 {
                     foreach (string s in nativs)
                     {
+                        mut.WaitOne();
                         telnetClient.write("get" + s + "\n");
+
                         switch (s)
                         {
                             case "/instrumentation/heading-indicator/indicated-heading-deg":
@@ -86,9 +89,9 @@ namespace FilghtSimulatorApp.Model
                                 altimeterIndicatedAltitudeFt = telnetClient.read();
                                 break;
                         }
-
-
+                        mut.ReleaseMutex();
                     }
+
                     Thread.Sleep(250);// read the data in 4Hz
                 }
             }).Start();
