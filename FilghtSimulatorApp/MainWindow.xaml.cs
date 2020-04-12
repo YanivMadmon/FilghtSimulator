@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,16 @@ namespace FilghtSimulatorApp
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+        }
+
+        private void ViewDashboard_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ViewClient_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.ViewClient.Init();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace FilghtSimulatorApp.ViewModels
 {
     public class MainViewModel
     {
-       private DashboardVM dvm;
+       public  DashboardVM dvm;
         public MainViewModel(IModel m)
         {
             dvm = new DashboardVM(m);

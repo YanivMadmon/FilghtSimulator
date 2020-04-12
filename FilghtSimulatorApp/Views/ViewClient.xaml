@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="FilghtSimulatorApp.Views.ViewClient"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FilghtSimulatorApp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Label x:Name="IPLebel" Content="IP Address" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.392,2.94" Height="50" Width="129" Margin="21,23,0,0" FontFamily="Arial" FontSize="20"/>
+        <TextBox x:Name="IPTextBox" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="1.738,3.63" Margin="225,23,0,0"/>
+        <Label x:Name="PortLebel" Content="Port" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.392,2.94" Height="50" Width="129" Margin="21,120,0,0" FontFamily="Arial" FontSize="20"/>
+        <TextBox x:Name="PortTextBox" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="1.738,3.63" Margin="225,120,0,0"/>
+        <Button x:Name="ConnectBottom" Content="Connect" HorizontalAlignment="Left" Margin="479,23,0,0" VerticalAlignment="Top" Width="128" Height="50" FontSize="20" Click="ConnectBottom_Click"/>
+        <Button x:Name="DisconnectBottom" Content="Disconnect" HorizontalAlignment="Left" Margin="479,120,0,0" VerticalAlignment="Top" Width="128" Height="50" FontSize="20" Click="ConnectBottom_Click"/>
+
+    </Grid>
+</UserControl>

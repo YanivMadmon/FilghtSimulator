@@ -28,7 +28,6 @@ namespace FilghtSimulatorApp.Views
             InitializeComponent();
             //vm = new DashboardVM(new myModel(new myTelnetClient()));
 
-            DataContext = vm;
         }
     }
 }
