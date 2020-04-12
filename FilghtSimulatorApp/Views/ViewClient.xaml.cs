@@ -48,5 +48,10 @@ namespace FilghtSimulatorApp.Views
         {
             PortTextBox.Text = ConfigurationManager.AppSettings.Get("PORT");
         }
+
+        private void DisconnectBottom_Click(object sender, RoutedEventArgs e)
+        {
+            vm.model.disconnect();
+        }
     }
 }
