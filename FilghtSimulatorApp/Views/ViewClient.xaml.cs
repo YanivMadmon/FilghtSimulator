@@ -31,19 +31,22 @@ namespace FilghtSimulatorApp.Views
 
         private void ConnectBottom_Click(object sender, RoutedEventArgs e)
         {
-            if (IPTextBox.Text != null)
-            {
                 vm.model.connect(IPTextBox.Text, Int32.Parse(PortTextBox.Text));
-                vm.model.start();
-            }
-            else
-            {
-                vm.model.connect(ConfigurationManager.AppSettings.Get("IP"), Int32.Parse(ConfigurationManager.AppSettings.Get("PORT")));
-            }
+                vm.model.start();   
         }
         public void Init()
         {
             vm = (Application.Current as App).MainViewModel.dvm;
+        }
+
+        private void IPTextBox_Initialized(object sender, EventArgs e)
+        {
+            IPTextBox.Text = ConfigurationManager.AppSettings.Get("IP");
+        }
+
+        private void PortTextBox_Initialized(object sender, EventArgs e)
+        {
+            PortTextBox.Text = ConfigurationManager.AppSettings.Get("PORT");
         }
     }
 }
