@@ -5,17 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FilghtSimulatorApp.Model;
-using INotifyPropertyChanged = FilghtSimulatorApp.Model.INotifyPropertyChanged;
 
 namespace FilghtSimulatorApp.ViewModels
 {
 
 
-     public class DashboardVM : INotifyPropertyChanged
+      public class DashboardVM : INotifyPropertyChanged
     {
-        public IModel model;
-        public event PropertyChangedEventHandler PropertyChanged;
-       public DashboardVM(IModel m)
+        public myModel model;
+       public DashboardVM(myModel m)
         {
             this.model = m;
             this.model.PropertyChanged +=
@@ -23,9 +21,18 @@ namespace FilghtSimulatorApp.ViewModels
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
         public string VM_IndicatedHeadingDeg
         {
-            get { return model.IndicatedHeadingDeg; }
+            get{ return model.IndicatedHeadingDeg; }
         }
         public string VM_GpsIndicatedVerticalSpeed
         {
@@ -55,18 +62,6 @@ namespace FilghtSimulatorApp.ViewModels
         {
             get { return model.AltimeterIndicatedAltitudeFt; }
         }
-
-
-        public void NotifyPropertyChanged(string propName)
-        {
-            if (this.PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
-        }
     }
 
-    internal class pucbic
-    {
-    }
 }

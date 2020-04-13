@@ -21,22 +21,23 @@ namespace FilghtSimulatorApp.Views
     /// <summary>
     /// Interaction logic for ViewClient.xaml
     /// </summary>
-    public partial class ViewClient : UserControl
+     partial class ViewClient : UserControl
     {
-        public DashboardVM vm; 
+        public ClientVM cvm; 
         public ViewClient()
         {
             InitializeComponent();
+
         }
 
         private void ConnectBottom_Click(object sender, RoutedEventArgs e)
         {
-                vm.model.connect(IPTextBox.Text, Int32.Parse(PortTextBox.Text));
-                vm.model.start();   
+                cvm.model.connect(IPTextBox.Text, Int32.Parse(PortTextBox.Text));
+                cvm.model.start();   
         }
         public void Init()
         {
-            vm = (Application.Current as App).MainViewModel.dvm;
+            cvm = (Application.Current as App).MainViewModel.cvm;
         }
 
         private void IPTextBox_Initialized(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace FilghtSimulatorApp.Views
 
         private void DisconnectBottom_Click(object sender, RoutedEventArgs e)
         {
-            vm.model.disconnect();
+            cvm.model.disconnect();
         }
     }
 }

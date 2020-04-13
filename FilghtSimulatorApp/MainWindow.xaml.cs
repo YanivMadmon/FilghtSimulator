@@ -33,7 +33,7 @@ namespace FilghtSimulatorApp
 
         private void ViewDashboard_Loaded(object sender, RoutedEventArgs e)
         {
-
+           this.ViewDashboard.Init();
         }
 
         private void ViewClient_Loaded(object sender, RoutedEventArgs e)

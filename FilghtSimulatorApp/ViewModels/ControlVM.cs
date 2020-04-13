@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FilghtSimulatorApp.ViewModels
 {
-    class ControlVM : Model.INotifyPropertyChanged
+    class ControlVM: INotifyPropertyChanged
     {
-        IModel model;
+       private IModel model;
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
