@@ -13,7 +13,7 @@ namespace FilghtSimulatorApp.Model
         private TcpClient clientSocket;
         private StreamWriter sw;
         private StreamReader sr;
-        string dataRead = null;
+        //string dataRead = null;
 
         public void connect(string ip, int port)
         {
@@ -33,14 +33,15 @@ namespace FilghtSimulatorApp.Model
 
         public string read()
         {
-            return dataRead;
+            string data= sr.ReadLine(); ;
+            return data;
         }
 
         public void write(string command)
         {
             sw.WriteLine(command);
             sw.Flush();
-            dataRead = sr.ReadLine();
+            //dataRead = sr.ReadLine();
         }
     }
 }

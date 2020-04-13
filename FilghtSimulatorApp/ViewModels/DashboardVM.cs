@@ -65,8 +65,4 @@ namespace FilghtSimulatorApp.ViewModels
             }
         }
     }
-
-    internal class pucbic
-    {
-    }
 }
