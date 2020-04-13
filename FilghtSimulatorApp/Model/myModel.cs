@@ -203,5 +203,12 @@ namespace FilghtSimulatorApp.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
+
+
+        public void throttle(String value)
+        {
+            telnetClient.write("set " + value + "\n");
+        }
+
     }
 }

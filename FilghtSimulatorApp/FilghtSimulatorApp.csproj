@@ -66,6 +66,7 @@
     <Compile Include="Model\ITelnetClient.cs" />
     <Compile Include="Model\myModel.cs" />
     <Compile Include="Model\myTelnetClient .cs" />
+    <Compile Include="ViewModels\ControlVM.cs" />
     <Compile Include="ViewModels\DashboardVM.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\Joystick.xaml.cs">
