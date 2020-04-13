@@ -205,9 +205,28 @@ namespace FilghtSimulatorApp.Model
         }
 
 
-        public void throttle(String value)
+        public void updateThrottle(String value)
         {
-            telnetClient.write("set " + value + "\n");
+            telnetClient.write("set /controls/engines/engine/throttle " + value + "\n");
+            telnetClient.read();
+        }
+
+        public void updateAileron(String value)
+        {
+            telnetClient.write("set /controls/flight/aileron " + value + "\n");
+            telnetClient.read();
+        }
+
+        public void updateRudder(String value)
+        {
+            telnetClient.write("set /controls/flight/rudder " + value + "\n");
+            telnetClient.read();
+        }
+
+        public void updateElevator(String value)
+        {
+            telnetClient.write("set /controls/flight/elevator " + value + "\n");
+            telnetClient.read();
         }
 
     }
