@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FilghtSimulatorApp.Model;
-using INotifyPropertyChanged = FilghtSimulatorApp.Model.INotifyPropertyChanged;
 
 namespace FilghtSimulatorApp.ViewModels
 {
