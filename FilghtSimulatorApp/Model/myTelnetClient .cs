@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FilghtSimulatorApp.Model
 {
-    public class myTelnetClient : ITelnetClient
+    public class MyTelnetClient : ITelnetClient
     {
         private TcpClient clientSocket;
         private StreamWriter sw;

@@ -24,15 +24,18 @@ namespace FilghtSimulatorApp.Model
         private string attitudeIndicatorInternalPitchDeg;
         private string altimeterIndicatedAltitudeFt;
 
-        public myModel(ITelnetClient telnetClient) { 
+        public myModel(ITelnetClient telnetClient)
+        {
             this.telnetClient = telnetClient;
             this.stop = false; this.mut = new Mutex();
         }
-        public void connect(string ip, int port) {
+        public void connect(string ip, int port)
+        {
             this.telnetClient.connect(ip, port);
             this.stop = false;
         }
-        public void disconnect() {
+        public void disconnect()
+        {
             this.stop = true;
             telnetClient.disconnect();
         }
@@ -94,7 +97,7 @@ namespace FilghtSimulatorApp.Model
                                 AltimeterIndicatedAltitudeFt = telnetClient.read();
                                 break;
                         }
-                        
+
                         mut.ReleaseMutex();
                     }
 
@@ -108,8 +111,8 @@ namespace FilghtSimulatorApp.Model
             get { return this.indicatedHeadingDeg; }
             set
             {
-                    indicatedHeadingDeg = value;
-                    this.NotifyPropertyChanged("IndicatedHeadingDeg");
+                indicatedHeadingDeg = value;
+                this.NotifyPropertyChanged("IndicatedHeadingDeg");
             }
         }
         public string GpsIndicatedVerticalSpeed
@@ -197,11 +200,36 @@ namespace FilghtSimulatorApp.Model
             }
         }
 
-        public void NotifyPropertyChanged(string propName) {
+        public void NotifyPropertyChanged(string propName)
+        {
             if (this.PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
+        }
+
+        public void updateThrottle(String value)
+        {
+            telnetClient.write("set /controls/engines/engine/throttle " + value + "\n");
+            telnetClient.read();
+        }
+
+        public void updateAileron(String value)
+        {
+            telnetClient.write("set /controls/flight/aileron " + value + "\n");
+            telnetClient.read();
+        }
+
+        public void updateRudder(String value)
+        {
+            telnetClient.write("set /controls/flight/rudder " + value + "\n");
+            telnetClient.read();
+        }
+
+        public void updateElevator(String value)
+        {
+            telnetClient.write("set /controls/flight/elevator " + value + "\n");
+            telnetClient.read();
         }
     }
 }
