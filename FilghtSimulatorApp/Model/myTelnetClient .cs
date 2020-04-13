@@ -33,7 +33,7 @@ namespace FilghtSimulatorApp.Model
 
         public string read()
         {
-            string data= sr.ReadLine(); ;
+            string data = sr.ReadLine(); ;
             return data;
         }
 

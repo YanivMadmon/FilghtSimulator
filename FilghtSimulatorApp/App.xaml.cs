@@ -18,14 +18,15 @@ namespace FlightSimulatorApp
     public partial class App : Application
     {
         public MainViewModel MainViewModel { get; internal set; }
+
         public void Application_Startup(object sender, StartupEventArgs e)
         {
             //initialize communication
             // TCPclient tcpclient = new...
 
-            IModel model = new myModel(new myTelnetClient());
-            MainViewModel = new MainViewModel(model);
-            
+            myModel Model = new myModel(new myTelnetClient());
+            MainViewModel = new MainViewModel(Model);
+
             // Create the startup window
             MainWindow wnd = new MainWindow();
             // Do stuff here, e.g. to the window
@@ -34,4 +35,4 @@ namespace FlightSimulatorApp
             wnd.Show();
         }
     }
-}
+}   

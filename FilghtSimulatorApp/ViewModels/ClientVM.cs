@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace FilghtSimulatorApp.ViewModels
 {
-     public class MainViewModel
+     public class ClientVM
     {
-       public  DashboardVM dvm;
-       public ClientVM cvm;
-         public MainViewModel(myModel m)
+       public IModel model;
+        public ClientVM(myModel m)
         {
-            dvm = new DashboardVM(m);
-            cvm = new ClientVM(m);
+            this.model = m;
         }
-    }
+
+     }
 }

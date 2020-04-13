@@ -1,6 +1,4 @@
-﻿using FilghtSimulatorApp.ViewModels;
-using FilghtSimulatorApp.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,27 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FlightSimulatorApp;
 
 namespace FilghtSimulatorApp.Views
 {
     /// <summary>
-    /// Interaction logic for ViewDashboard.xaml
+    /// Interaction logic for ViewTSP.xaml
     /// </summary>
-    public partial class ViewDashboard : UserControl
+    public partial class ViewTSP : UserControl
     {
-         public DashboardVM dvm;
-        public ViewDashboard()
+        public ViewTSP()
         {
-
             InitializeComponent();
-
-        }
-        public void Init()
-        {
-            dvm = (Application.Current as App).MainViewModel.dvm;
-            DataContext = dvm;
         }
     }
 }
-
