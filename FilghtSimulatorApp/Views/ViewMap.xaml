@@ -7,11 +7,22 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
+    <UserControl.Resources>
+        <BitmapImage x:Key="ImageSource" UriSource="a.png" />
+        <ControlTemplate x:Key="Airplane" TargetType="m:Pushpin">
+            <Grid>
+                <Rectangle Width="40" Height="40" >
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource = "{StaticResource ImageSource}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
         <m:Map Margin="0,0,0,0" CredentialsProvider ="AnwUTaQxArPtFK-I4MIkjBHQDGbcg8l2x9dx8gtkb07ot8VctCQORU2x1NB6cQVz">
             
-            <m:Pushpin Location="{Binding Path= VM_Location, Mode=OneWay}"></m:Pushpin>
+            <m:Pushpin x:Name="myPushPin" Template="{StaticResource Airplane}"  m:MapLayer.Position="{Binding Path= VM_Location}"></m:Pushpin>
         </m:Map>
     </Grid>
 </UserControl>
