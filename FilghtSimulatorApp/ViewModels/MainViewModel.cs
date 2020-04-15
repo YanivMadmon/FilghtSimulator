@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace FilghtSimulatorApp.ViewModels
 {
-    public class MainViewModel
+     public class MainViewModel
     {
-        public DashboardVM dvm;
-        public ClientVM cvm;
-        public ControlVM convm;
+       public  DashboardVM dvm;
+       public ClientVM cvm;
         public MapVM mvm;
-        public MainViewModel(myModel m)
+        public ControlVM convm;
+         public MainViewModel(myModel m)
         {
             dvm = new DashboardVM(m);
             cvm = new ClientVM(m);
-            convm = new ControlVM(m);
             mvm = new MapVM(m);
+            convm = new ControlVM(m);
+            
         }
     }
 }

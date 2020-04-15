@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
 using System.ComponentModel;
+using FilghtSimulatorApp.ViewModels;
+using FlightSimulatorApp;
 
 namespace FilghtSimulatorApp.Views
 {
@@ -25,6 +27,8 @@ namespace FilghtSimulatorApp.Views
         public Point startPoint = new Point();
         private string xstring;
         private string ystring;
+        public string yDouble;
+
 
         public string xString
         {
@@ -52,11 +56,14 @@ namespace FilghtSimulatorApp.Views
 
         }
 
+        public ControlVM convm;
+
         public Joystick()
         {
             InitializeComponent();
             xString = "0.00";
             yString = "0.00";
+
 
         }
         public event PropertyChangedEventHandler PropertyChanged;

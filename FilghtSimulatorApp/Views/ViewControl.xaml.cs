@@ -24,11 +24,12 @@ namespace FilghtSimulatorApp.Views
     public partial class ViewControl : UserControl
     {
         public ControlVM convm;
+
         public ViewControl()
         {
             InitializeComponent();
+            DataContext = this.Joy;
         }
-
         public void Init()
         {
             convm = (Application.Current as App).MainViewModel.convm;

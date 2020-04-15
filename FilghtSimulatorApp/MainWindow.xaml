@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <Viewbox HorizontalAlignment="Left" Height="205" VerticalAlignment="Top" Width="266" Margin="311.6,205,-2.4,0" Grid.Column="2">
-            <Views:ViewControl Height="465" Width="627"></Views:ViewControl>
+            <Views:ViewControl x:Name="ViewControl" Height="465" Width="627" Loaded="ViewControl_Loaded"></Views:ViewControl>
         </Viewbox>
         <Viewbox HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="515" Margin="10,-10,0,0" Grid.ColumnSpan="3">
             <Views:ViewMap x:Name="ViewMap" Margin="0,0,0,0" Height="556" Width="664" Loaded="ViewMap_Loaded"></Views:ViewMap>
