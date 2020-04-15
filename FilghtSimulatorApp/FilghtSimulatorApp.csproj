@@ -69,6 +69,7 @@
     <Compile Include="ViewModels\ControlVM.cs" />
     <Compile Include="ViewModels\DashboardVM.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MapVM.cs" />
     <Compile Include="Views\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>

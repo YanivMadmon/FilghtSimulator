@@ -15,14 +15,14 @@
             <ColumnDefinition Width="575*"/>
         </Grid.ColumnDefinitions>
 
-        <Viewbox HorizontalAlignment="Left" Height="205" VerticalAlignment="Top" Width="266" Margin="310.6,200,-1.4,0" Grid.Column="2">
+        <Viewbox HorizontalAlignment="Left" Height="205" VerticalAlignment="Top" Width="266" Margin="311.6,205,-2.4,0" Grid.Column="2">
             <Views:ViewControl Height="465" Width="627"></Views:ViewControl>
         </Viewbox>
         <Viewbox HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="515" Margin="10,-10,0,0" Grid.ColumnSpan="3">
-            <Views:ViewMap Margin="0,0,0,0" Height="556" Width="664"></Views:ViewMap>
+            <Views:ViewMap x:Name="ViewMap" Margin="0,0,0,0" Height="556" Width="664" Loaded="ViewMap_Loaded"></Views:ViewMap>
         </Viewbox>
-        <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="118" Margin="311.333,77,0,0" VerticalAlignment="Top" Width="250">
-            <Views:ViewDashboard x:Name="ViewDashboard" Height="238" Width="501" Loaded="ViewDashboard_Loaded"></Views:ViewDashboard>
+        <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="118" Margin="301.6,52,-26.4,0" VerticalAlignment="Top" Width="418">
+            <Views:ViewDashboard x:Name="ViewDashboard" Height="181" Width="418" Loaded="ViewDashboard_Loaded"></Views:ViewDashboard>
         </Viewbox>
         <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="78" Margin="306.333,10,0,0" VerticalAlignment="Top" Width="255">
             <Views:ViewClient x:Name="ViewClient" Loaded="ViewClient_Loaded">

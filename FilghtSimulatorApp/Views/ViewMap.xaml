@@ -10,7 +10,9 @@
 
     <Grid>
         <m:Map Margin="0,0,0,0" CredentialsProvider ="AnwUTaQxArPtFK-I4MIkjBHQDGbcg8l2x9dx8gtkb07ot8VctCQORU2x1NB6cQVz">
-            <m:Pushpin Location="5,20"></m:Pushpin>
+            
+            <m:Pushpin Location="{Binding Path= VM_Location, Mode=OneWay}"></m:Pushpin>
         </m:Map>
     </Grid>
 </UserControl>
+    

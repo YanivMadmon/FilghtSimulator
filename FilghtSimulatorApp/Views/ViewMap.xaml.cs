@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FilghtSimulatorApp.ViewModels;
+using FlightSimulatorApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,17 @@ namespace FilghtSimulatorApp.Views
     /// </summary>
     public partial class ViewMap : UserControl
     {
+        public MapVM mvm;
         public ViewMap()
         {
             InitializeComponent();
         }
+        public void Init()
+        {
+            mvm = (Application.Current as App).MainViewModel.mvm;
+            DataContext = mvm;
+        }
     }
+
+
 }

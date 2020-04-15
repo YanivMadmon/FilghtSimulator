@@ -23,6 +23,11 @@ namespace FilghtSimulatorApp.Model
         private string attitudeIndicatorInternalRollDeg;
         private string attitudeIndicatorInternalPitchDeg;
         private string altimeterIndicatedAltitudeFt;
+        private string latitude;
+        private string longitude;
+        private string location;
+
+
 
         public myModel(ITelnetClient telnetClient)
         {
@@ -51,6 +56,8 @@ namespace FilghtSimulatorApp.Model
             nativs.Add("/instrumentation/attitude-indicator/internal-roll-deg");
             nativs.Add("/instrumentation/attitude-indicator/internal-pitch-deg");
             nativs.Add("/instrumentation/altimeter/indicated-altitude-ft");
+            nativs.Add("/position/latitude-deg");
+            nativs.Add("/position/longitude-deg");
 
             new Thread(delegate ()
             {
@@ -66,7 +73,6 @@ namespace FilghtSimulatorApp.Model
                         {
                             case "/instrumentation/heading-indicator/indicated-heading-deg":
                                 this.IndicatedHeadingDeg = telnetClient.read();
-                                Console.WriteLine(IndicatedHeadingDeg);
                                 break;
 
                             case "/instrumentation/gps/indicated-vertical-speed":
@@ -96,11 +102,23 @@ namespace FilghtSimulatorApp.Model
                             case "/instrumentation/altimeter/indicated-altitude-ft":
                                 AltimeterIndicatedAltitudeFt = telnetClient.read();
                                 break;
+
+                            case "/position/latitude-deg":
+                                Latitiude = telnetClient.read();
+                                break;
+
+                            case "/position/longitude-deg":
+                                Longitude = telnetClient.read();
+                                break;
                         }
 
                         mut.ReleaseMutex();
-                    }
 
+
+                    }
+                    mut.WaitOne();
+                    Location = Convert.ToDouble(Latitiude) + "," + Convert.ToDouble(Longitude);
+                    mut.ReleaseMutex();
                     Thread.Sleep(250);// read the data in 4Hz
                 }
             }).Start();
@@ -196,6 +214,42 @@ namespace FilghtSimulatorApp.Model
                 {
                     altimeterIndicatedAltitudeFt = value;
                     this.NotifyPropertyChanged("AltimeterIndicatedAltitudeFt");
+                }
+            }
+        }
+        public string Latitiude
+        {
+            get { return this.latitude; }
+            set
+            {
+                if (this.latitude != value)
+                {
+                    latitude = value;
+                    this.NotifyPropertyChanged("Latitiude");
+                }
+            }
+        }
+        public string Longitude
+        {
+            get { return this.longitude; }
+            set
+            {
+                if (this.longitude != value)
+                {
+                    longitude = value;
+                    this.NotifyPropertyChanged("Longitude");
+                }
+            }
+        }
+        public string Location
+        {
+            get { return this.location; }
+            set
+            {
+                if (this.location != value)
+                {
+                    location = value;
+                    this.NotifyPropertyChanged("Location");
                 }
             }
         }

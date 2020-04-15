@@ -8,20 +8,20 @@
              d:DesignHeight="300" d:DesignWidth="400">
     <Grid>
         <TextBlock x:Name="Heading" HorizontalAlignment="Left" Margin="30,44,-135,-74" TextWrapping="Wrap" Text="Heading" VerticalAlignment="Top" FontSize="20" Height="30" Width="105"/>
-        <TextBox x:Name="Heading_Value" HorizontalAlignment="Left" Height="23" Margin="115,49,-150,-72" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path= VM_IndicatedHeadingDeg, Mode=OneWay, StringFormat=0.0#}" FontSize="8" IsEnabled="False"/>
+        <TextBox x:Name="Heading_Value" HorizontalAlignment="Left" Height="23" Margin="115,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path= VM_IndicatedHeadingDeg, Mode=OneWay, StringFormat=0.0#}" />
         <TextBlock x:Name="Vertical" HorizontalAlignment="Left" Margin="30,93,-135,-123" TextWrapping="Wrap" Text="Vertical" VerticalAlignment="Top" FontSize="20" Height="30" Width="105" />
-        <TextBox x:Name="Vertical_Value" HorizontalAlignment="Left" Height="23" Margin="115,98,-150,-121" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path= VM_GpsIndicatedVerticalSpeed, Mode=OneWay, StringFormat=0.0#}"/>
+        <TextBox x:Name="Vertical_Value" HorizontalAlignment="Left" Height="23" Margin="115,98,-150,-121" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path= VM_GpsIndicatedVerticalSpeed, Mode=OneWay, StringFormat=0.0#}"/>
         <TextBlock x:Name="Ground" HorizontalAlignment="Left" Margin="30,141,-135,-171" TextWrapping="Wrap" Text="Ground" VerticalAlignment="Top" FontSize="20" Height="30" Width="105"/>
-        <TextBox x:Name="Ground_Value" HorizontalAlignment="Left" Height="23" Margin="115,146,-150,-169" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path=VM_GpsIndicatedGroundSpeedKt, Mode=OneWay, StringFormat=0.0#}"/>
+        <TextBox x:Name="Ground_Value" HorizontalAlignment="Left" Height="23" Margin="115,146,-150,-169" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path=VM_GpsIndicatedGroundSpeedKt, Mode=OneWay, StringFormat=0.0#}"/>
         <TextBlock x:Name="AirSpeed" HorizontalAlignment="Left" Margin="30,191,-135,-221" TextWrapping="Wrap" Text="AirSpeed" VerticalAlignment="Top" FontSize="20" Height="30" Width="105"/>
-        <TextBox x:Name="AirSpeed_Value" HorizontalAlignment="Left" Height="23" Margin="115,196,-150,-219" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path= VM_AirspeedIndicatorIndicatedSpeedKt, Mode=OneWay, StringFormat=0.0#}"/>
+        <TextBox x:Name="AirSpeed_Value" HorizontalAlignment="Left" Height="23" Margin="115,196,-150,-219" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path= VM_AirspeedIndicatorIndicatedSpeedKt, Mode=OneWay, StringFormat=0.0#}"/>
         <TextBlock x:Name="Altitude" HorizontalAlignment="Left" Margin="217,44,-322,-74" TextWrapping="Wrap" Text="Altitude" VerticalAlignment="Top" FontSize="20" Height="30" Width="105"/>
-        <TextBox x:Name="Altitude_Value" HorizontalAlignment="Left" Height="23" Margin="302,49,-337,-72" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path= VM_GpsIndicatedAltitudeFt, Mode=OneWay, StringFormat=0.0#}"/>
+        <TextBox x:Name="Altitude_Value" HorizontalAlignment="Left" Height="23" Margin="302,49,-337,-72" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path= VM_GpsIndicatedAltitudeFt, Mode=OneWay, StringFormat=0.0#}"/>
         <TextBlock x:Name="Roll" HorizontalAlignment="Left" Margin="217,93,-322,-123" TextWrapping="Wrap" Text="Roll" VerticalAlignment="Top" FontSize="20" Height="30" Width="105"/>
-        <TextBox x:Name="Roll_Value" HorizontalAlignment="Left" Height="23" Margin="302,98,-337,-121" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path= VM_AttitudeIndicatorInternalRollDeg, Mode=OneWay, StringFormat=0.0#}"/>
+        <TextBox x:Name="Roll_Value" HorizontalAlignment="Left" Height="23" Margin="302,98,-337,-121" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path= VM_AttitudeIndicatorInternalRollDeg, Mode=OneWay, StringFormat=0.0#}"/>
         <TextBlock x:Name="Pitch" HorizontalAlignment="Left" Margin="217,141,-322,-171" TextWrapping="Wrap" Text="Pitch" VerticalAlignment="Top" FontSize="20" Height="30" Width="105"/>
-        <TextBox x:Name="Pitch_Value" HorizontalAlignment="Left" Height="23" Margin="302,146,-337,-169" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path= VM_AttitudeIndicatorInternalPitchDeg, Mode=OneWay, StringFormat=0.0#}"/>
+        <TextBox x:Name="Pitch_Value" HorizontalAlignment="Left" Height="23" Margin="302,146,-337,-169" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path= VM_AttitudeIndicatorInternalPitchDeg, Mode=OneWay, StringFormat=0.0#}"/>
         <TextBlock x:Name="Altimeter" HorizontalAlignment="Left" Margin="217,191,-322,-221" TextWrapping="Wrap" Text="Altimeter" VerticalAlignment="Top" FontSize="20" Height="30" Width="105"/>
-        <TextBox x:Name="Altimeter_Value" HorizontalAlignment="Left" Height="23" Margin="302,196,-337,-219" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Text="{Binding Path= VM_AltimeterIndicatedAltitudeFt, Mode=OneWay, StringFormat=0.0#}"/>
+        <TextBox x:Name="Altimeter_Value" HorizontalAlignment="Left" Height="23" Margin="302,196,-337,-219" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="{Binding Path= VM_AltimeterIndicatedAltitudeFt, Mode=OneWay, StringFormat=0.0#}"/>
     </Grid>
 </UserControl>

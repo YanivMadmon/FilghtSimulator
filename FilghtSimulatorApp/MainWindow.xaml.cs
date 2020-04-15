@@ -40,5 +40,11 @@ namespace FilghtSimulatorApp
         {
             this.ViewClient.Init();
         }
+
+        private void ViewMap_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.ViewMap.Init();
+
+        }
     }
 }
