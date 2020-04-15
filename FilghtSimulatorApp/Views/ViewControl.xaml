@@ -25,7 +25,7 @@
         <Viewbox HorizontalAlignment="Left" Height="314" Margin="116,68,0,0" VerticalAlignment="Top" Width="334" Grid.RowSpan="3" >
             <local:Joystick x:Name="Joy"></local:Joystick>
         </Viewbox>
-        <TextBlock x:Name="Xvalue" HorizontalAlignment="Left" Margin="400,0,0,164.8" TextWrapping="Wrap" Text="{Binding xString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="110" FontWeight="Bold" Foreground="#FFF70E0E" />
+        <TextBlock x:Name="Xvalue" HorizontalAlignment="Left" Margin="400,0,0,164.8" TextWrapping="Wrap" Text="{Binding ElementName=Joy, Path = xString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="110" FontWeight="Bold" Foreground="#FFF70E0E" />
         <TextBlock x:Name="Throttle" HorizontalAlignment="Left" Margin="18,7,0,0" TextWrapping="Wrap" Text="Throttle" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" FontSize="20">
             <TextBlock.RenderTransform>
                 <TransformGroup>
@@ -64,7 +64,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock x:Name="Yvalue" HorizontalAlignment="Left" Margin="445,0,-15,61.8" TextWrapping="Wrap" Text="{Binding yString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="90" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Foreground="#FFF31010" >
+        <TextBlock x:Name="Yvalue" HorizontalAlignment="Left" Margin="445,0,-15,61.8" TextWrapping="Wrap" Text="{Binding ElementName=Joy, Path = yString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" FontSize="30" Width="90" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Foreground="#FFF31010" >
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

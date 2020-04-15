@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
-
+using FilghtSimulatorApp.ViewModels;
+using FlightSimulatorApp;
 
 namespace FilghtSimulatorApp.Views
 {
@@ -22,10 +23,17 @@ namespace FilghtSimulatorApp.Views
     /// </summary>
     public partial class ViewControl : UserControl
     {
+        public ControlVM convm;
+
         public ViewControl()
         {
             InitializeComponent();
             DataContext = this.Joy;
+        }
+        public void Init()
+        {
+            convm = (Application.Current as App).MainViewModel.convm;
+            DataContext = convm;
         }
 
     }

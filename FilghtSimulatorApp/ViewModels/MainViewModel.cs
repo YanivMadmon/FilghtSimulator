@@ -12,11 +12,14 @@ namespace FilghtSimulatorApp.ViewModels
        public  DashboardVM dvm;
        public ClientVM cvm;
         public MapVM mvm;
+        public ControlVM convm;
          public MainViewModel(myModel m)
         {
             dvm = new DashboardVM(m);
             cvm = new ClientVM(m);
             mvm = new MapVM(m);
+            convm = new ControlVM(m);
+            
         }
     }
 }

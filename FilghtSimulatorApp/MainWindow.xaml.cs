@@ -46,5 +46,10 @@ namespace FilghtSimulatorApp
             this.ViewMap.Init();
 
         }
+
+        private void ViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.ViewControl.Init();
+        }
     }
 }
