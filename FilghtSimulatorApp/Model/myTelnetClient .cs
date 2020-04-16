@@ -33,15 +33,23 @@ namespace FilghtSimulatorApp.Model
 
         public string read()
         {
-            string data = sr.ReadLine(); ;
+            string data = "";
+            if (sr != null)
+            {
+                data = sr.ReadLine(); ;
+                return data;
+            }
             return data;
+
         }
 
         public void write(string command)
         {
-            sw.WriteLine(command);
-            sw.Flush();
-            //dataRead = sr.ReadLine();
+            if (sw != null)
+            {
+                sw.WriteLine(command);
+                sw.Flush();
+            }
         }
     }
 }
