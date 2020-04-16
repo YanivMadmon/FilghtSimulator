@@ -8,11 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label x:Name="IPLebel" Content="IP Address" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.392,2.94" Height="50" Width="129" Margin="21,23,0,0" FontFamily="Arial" FontSize="20"/>
-        <TextBox x:Name="IPTextBox" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="1.738,3.63" Margin="225,23,0,0" Initialized="IPTextBox_Initialized"/>
-        <Label x:Name="PortLebel" Content="Port" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.392,2.94" Height="50" Width="129" Margin="21,120,0,0" FontFamily="Arial" FontSize="20"/>
-        <TextBox x:Name="PortTextBox" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="1.738,3.63" Margin="225,120,0,0" Initialized="PortTextBox_Initialized"/>
+        <TextBox x:Name="IPTextBox" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="1.738,3.63" Margin="225,23,0,0" Initialized="IPTextBox_Initialized" FontSize="20"/>
+        <Label x:Name="PortLebel" Content="Port" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.392,2.94" Height="50" Width="129" Margin="21,78,0,0" FontFamily="Arial" FontSize="20"/>
+        <TextBox x:Name="PortTextBox" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="1.738,3.63" Margin="225,78,0,0" Initialized="PortTextBox_Initialized" FontSize="20"/>
         <Button x:Name="ConnectBottom" Content="Connect" HorizontalAlignment="Left" Margin="479,23,0,0" VerticalAlignment="Top" Width="128" Height="50" FontSize="20" Click="ConnectBottom_Click"/>
-        <Button x:Name="DisconnectBottom" Content="Disconnect" HorizontalAlignment="Left" Margin="479,120,0,0" VerticalAlignment="Top" Width="128" Height="50" FontSize="20" Click="DisconnectBottom_Click"/>
+        <Button x:Name="DisconnectBottom" Content="Disconnect" HorizontalAlignment="Left" Margin="479,78,0,0" VerticalAlignment="Top" Width="128" Height="50" FontSize="20" Click="DisconnectBottom_Click"/>
+        <Label x:Name="Errors" Content="Messages" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.392,2.94" Height="50" Width="129" Margin="21,133,0,0" FontFamily="Arial" FontSize="20"/>
+        <TextBox x:Name="Error_TextBox" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="1.738,3.63" Margin="225,133,0,0" Text="{Binding Path= VM_Error, Mode=OneWay}" FontSize="20"/>
 
     </Grid>
 </UserControl>

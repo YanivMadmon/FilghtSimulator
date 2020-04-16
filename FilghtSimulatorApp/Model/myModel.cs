@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,6 +16,7 @@ namespace FilghtSimulatorApp.Model
         public event PropertyChangedEventHandler PropertyChanged;
         Mutex mut;
 
+        private string error="test";
         private string indicatedHeadingDeg;
         private string gpsIndicatedGroundSpeedKt;
         private string gpsIndicatedVerticalSpeed;
@@ -72,7 +74,7 @@ namespace FilghtSimulatorApp.Model
                         switch (s)
                         {
                             case "/instrumentation/heading-indicator/indicated-heading-deg":
-                                this.IndicatedHeadingDeg = telnetClient.read();
+                                this.IndicatedHeadingDeg = Read();
                                 break;
 
                             case "/instrumentation/gps/indicated-vertical-speed":
@@ -80,35 +82,38 @@ namespace FilghtSimulatorApp.Model
                                 break;
 
                             case "/instrumentation/gps/indicated-ground-speed-kt":
-                                GpsIndicatedGroundSpeedKt = telnetClient.read();
+                                GpsIndicatedGroundSpeedKt = Read();
                                 break;
 
                             case "/instrumentation/airspeed-indicator/indicated-speed-kt":
-                                AirspeedIndicatorIndicatedSpeedKt = telnetClient.read();
+                                AirspeedIndicatorIndicatedSpeedKt = Read();
                                 break;
 
                             case "/instrumentation/gps/indicated-altitude-ft":
-                                GpsIndicatedAltitudeFt = telnetClient.read();
+                                GpsIndicatedAltitudeFt = Read();
                                 break;
 
                             case "/instrumentation/attitude-indicator/internal-roll-deg":
-                                AttitudeIndicatorInternalRollDeg = telnetClient.read();
+                                AttitudeIndicatorInternalRollDeg = Read();
                                 break;
 
                             case "/instrumentation/attitude-indicator/internal-pitch-deg":
-                                AttitudeIndicatorInternalPitchDeg = telnetClient.read();
+                                AttitudeIndicatorInternalPitchDeg = Read();
                                 break;
 
                             case "/instrumentation/altimeter/indicated-altitude-ft":
-                                AltimeterIndicatedAltitudeFt = telnetClient.read();
+                                AltimeterIndicatedAltitudeFt = Read();
                                 break;
 
                             case "/position/latitude-deg":
-                                Latitiude = telnetClient.read();
+                                Latitiude = Read();
                                 break;
 
                             case "/position/longitude-deg":
-                                Longitude = telnetClient.read();
+                                Longitude = Read();
+                                break;
+
+                            default: 
                                 break;
                         }
 
@@ -124,6 +129,32 @@ namespace FilghtSimulatorApp.Model
             }).Start();
         }
 
+
+
+
+        public string Read()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            var data = telnetClient.read();
+            if(sw.ElapsedMilliseconds>10000)
+            {
+                Error = "The server is not responding";
+                return data;
+            }
+            return data;
+            
+        }
+
+        public string Error
+        {
+            get { return this.error; }
+            set
+            {
+                error = value;
+                this.NotifyPropertyChanged("Error");
+            }
+        }
         public string IndicatedHeadingDeg
         {
             get { return this.indicatedHeadingDeg; }
@@ -262,26 +293,35 @@ namespace FilghtSimulatorApp.Model
             }
         }
 
+        public string throttle;
+        public string aileron;
+        public string rudder;
+        public string elevator;
+
         public void updateThrottle(String value)
         {
-            telnetClient.write("set /controls/engines/engine/throttle " + value + "\n");
+            throttle = value;
+            telnetClient.write("set /controls/engines/current-engine/throttle " + value + "\n");
             telnetClient.read();
         }
 
         public void updateAileron(String value)
         {
+            aileron = value;
             telnetClient.write("set /controls/flight/aileron " + value + "\n");
             telnetClient.read();
         }
 
         public void updateRudder(String value)
         {
+            rudder = value;
             telnetClient.write("set /controls/flight/rudder " + value + "\n");
             telnetClient.read();
         }
 
         public void updateElevator(String value)
         {
+            elevator = value;
             telnetClient.write("set /controls/flight/elevator " + value + "\n");
             telnetClient.read();
         }

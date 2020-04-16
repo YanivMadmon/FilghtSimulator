@@ -24,6 +24,7 @@ namespace FilghtSimulatorApp.Views
      partial class ViewClient : UserControl
     {
         public ClientVM cvm; 
+
         public ViewClient()
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace FilghtSimulatorApp.Views
         public void Init()
         {
             cvm = (Application.Current as App).MainViewModel.cvm;
+            DataContext = cvm;
         }
 
         private void IPTextBox_Initialized(object sender, EventArgs e)
