@@ -319,29 +319,57 @@ namespace FilghtSimulatorApp.Model
         public void updateThrottle(String value)
         {
             throttle = value;
-            telnetClient.write("set /controls/engines/current-engine/throttle " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                telnetClient.write("set /controls/engines/current-engine/throttle " + value + "\n");
+                telnetClient.read();
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
 
         public void updateAileron(String value)
         {
             aileron = value;
-            telnetClient.write("set /controls/flight/aileron " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                telnetClient.write("set /controls/flight/aileron " + value + "\n");
+                telnetClient.read();
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
 
         public void updateRudder(String value)
         {
-            rudder = value;
-            telnetClient.write("set /controls/flight/rudder " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                rudder = value;
+                telnetClient.write("set /controls/flight/rudder " + value + "\n");
+                telnetClient.read();
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
 
         public void updateElevator(String value)
         {
             elevator = value;
-            telnetClient.write("set /controls/flight/elevator " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                telnetClient.write("set /controls/flight/elevator " + value + "\n");
+                telnetClient.read();
+            }
+            catch(Exception e)
+            {
+                Error = e.Message;
+            }
         }
     }
 }
