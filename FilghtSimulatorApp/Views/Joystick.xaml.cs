@@ -16,6 +16,7 @@ using System.Threading;
 using System.ComponentModel;
 using FilghtSimulatorApp.ViewModels;
 using FlightSimulatorApp;
+using System.Windows.Media.Animation;
 
 namespace FilghtSimulatorApp.Views
 {
@@ -25,45 +26,25 @@ namespace FilghtSimulatorApp.Views
     public partial class Joystick : UserControl, INotifyPropertyChanged
     {
         public Point startPoint = new Point();
-        private string xstring;
-        private string ystring;
-        public string yDouble;
 
-
-        public string xString
+        public static readonly DependencyProperty RudderValProperty = DependencyProperty.Register("RudderVal", typeof(double), typeof(Joystick), null);
+        public double RudderVal
         {
-            get { return this.xstring; }
-            set
-            {
-                if (this.xstring != value)
-                {
-                    this.xstring = value;
-                    this.NotifyPropertyChanged("xString");
-                }
-            }
-        }
-        public string yString
-        {
-            get { return this.ystring; }
-            set
-            {
-                if (this.ystring != value)
-                {
-                    this.ystring = value;
-                    this.NotifyPropertyChanged("yString");
-                }
-            }
-
+            get { return Convert.ToDouble(GetValue(RudderValProperty)); }
+            set { SetValue(RudderValProperty, value); }
         }
 
-        public ControlVM convm;
+        public static readonly DependencyProperty ElevatorValProperty = DependencyProperty.Register("ElevatorVal", typeof(double), typeof(Joystick), null);
+        public double ElevatorVal
+        {
+            get { return Convert.ToDouble(GetValue(ElevatorValProperty)); }
+            set { SetValue(ElevatorValProperty, value); }
+        }
+
 
         public Joystick()
         {
             InitializeComponent();
-            xString = "0.00";
-            yString = "0.00";
-
 
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -74,7 +55,14 @@ namespace FilghtSimulatorApp.Views
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-        public void centerKnob_Completed(object sender, EventArgs e) { }
+        public void centerKnob_Completed(object sender, EventArgs e) {
+            Storyboard sb = this.Knob.FindResource("CenterKnob") as Storyboard;
+            sb.Stop(this);
+            knobPosition.X = 0; 
+            knobPosition.Y = 0;
+            RudderVal = 0;
+            ElevatorVal = 0;
+        }
 
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
@@ -89,6 +77,8 @@ namespace FilghtSimulatorApp.Views
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
+                Storyboard sb = this.Knob.FindResource("CenterKnob") as Storyboard;
+                sb.Stop(this);
                 double x = e.GetPosition(this).X - startPoint.X;
                 double y = e.GetPosition(this).Y - startPoint.Y;
                 if (Math.Sqrt(x * x + y * y) < ((Base.Width / 2) - (KnobBase.Width / 2)))
@@ -102,26 +92,31 @@ namespace FilghtSimulatorApp.Views
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            Storyboard sb = this.Knob.FindResource("CenterKnob") as Storyboard;
+            sb.Begin(this,true);
             knobPosition.X = 0;
             knobPosition.Y = 0;
-            xString = "0.00";
-            yString = "0.00";
+            RudderVal = 0;
+            ElevatorVal = 0;
         }
 
         private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
+            Storyboard sb = this.Knob.FindResource("CenterKnob") as Storyboard;
+            sb.Begin(this, true);
             knobPosition.X = 0;
             knobPosition.Y = 0;
-            xString = "0.00";
-            yString = "0.00";
+            RudderVal = 0;
+            ElevatorVal = 0;
         }
         public void normal()
         {
             double radKn = (Base.Width / 2) - (KnobBase.Width / 2);
             double x = knobPosition.X / radKn;
             double y = -(knobPosition.Y / radKn);
-            xString = System.Math.Round(x, 2).ToString();
-            yString = System.Math.Round(y, 2).ToString();
+            RudderVal = x;
+            ElevatorVal = y;
+
 
         }
     }

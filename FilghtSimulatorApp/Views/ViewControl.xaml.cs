@@ -28,7 +28,6 @@ namespace FilghtSimulatorApp.Views
         public ViewControl()
         {
             InitializeComponent();
-            DataContext = this.Joy;
         }
         public void Init()
         {
