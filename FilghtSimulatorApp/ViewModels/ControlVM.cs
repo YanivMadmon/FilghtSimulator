@@ -15,28 +15,39 @@ namespace FilghtSimulatorApp.ViewModels
         public ControlVM(myModel m)
         {
             this.model = m;
+            this.model.PropertyChanged +=
+            delegate (Object sender, PropertyChangedEventArgs e) {
+                NotifyPropertyChanged("VM_" + e.PropertyName);
+};
+        }
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string VM_throttle
         {
-            set { model.updateThrottle(value); }
+            set { if (model.throttle != value) model.updateThrottle(value); }
         }
 
         public string VM_aileron
         {
-            set { model.updateAileron(value); }
+            set { if (model.aileron != value) model.updateAileron(value); }
         }
 
         public string VM_elevator
         {
-            set { model.updateElevator(value); }
+            set { if (model.elevator != value) model.updateElevator(value); }
         }
 
         public string VM_rudder
         {
-            set { model.updateRudder(value); }
+            set { if (model.rudder != value) model.updateRudder(value); }
         }
     }
 }
