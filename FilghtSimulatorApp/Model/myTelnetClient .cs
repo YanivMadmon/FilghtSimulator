@@ -51,10 +51,16 @@ namespace FilghtSimulatorApp.Model
         }
 
         public string read()
-        {
+        { 
+            string data = "";
+            
             try
             {
-                string data = sr.ReadLine(); ;
+                if (sr != null)
+                {
+                    data = sr.ReadLine(); ;
+                    return data;
+                }
                 return data;
             }
 
@@ -68,8 +74,11 @@ namespace FilghtSimulatorApp.Model
         {
             try
             {
-                sw.WriteLine(command);
-                sw.Flush();
+                if (sw != null)
+                {
+                    sw.WriteLine(command);
+                    sw.Flush();
+                }
             }
             catch(Exception e)
             {
