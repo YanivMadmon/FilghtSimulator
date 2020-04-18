@@ -34,9 +34,7 @@ namespace FilghtSimulatorApp.Views
         private void ConnectBottom_Click(object sender, RoutedEventArgs e)
         {
                 cvm.model.connect(IPTextBox.Text, Int32.Parse(PortTextBox.Text));
-            if (cvm.model.telnetClient.clientSocket.Connected) {
-                cvm.model.start();
-            }
+                cvm.model.start();   
         }
         public void Init()
         {

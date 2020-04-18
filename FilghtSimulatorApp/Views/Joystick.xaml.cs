@@ -77,21 +77,21 @@ namespace FilghtSimulatorApp.Views
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                Storyboard sb = this.Knob.FindResource("CenterKnob") as Storyboard;
-                sb.Stop(this);
+                Knob.CaptureMouse();
                 double x = e.GetPosition(this).X - startPoint.X;
                 double y = e.GetPosition(this).Y - startPoint.Y;
                 if (Math.Sqrt(x * x + y * y) < ((Base.Width / 2) - (KnobBase.Width / 2)))
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
-                    normal();
+                    Normal();
                 }
             }
         }
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            Knob.ReleaseMouseCapture();
             Storyboard sb = this.Knob.FindResource("CenterKnob") as Storyboard;
             sb.Begin(this,true);
             knobPosition.X = 0;
@@ -102,6 +102,7 @@ namespace FilghtSimulatorApp.Views
 
         private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
+            Knob.ReleaseMouseCapture();
             Storyboard sb = this.Knob.FindResource("CenterKnob") as Storyboard;
             sb.Begin(this, true);
             knobPosition.X = 0;
@@ -109,7 +110,7 @@ namespace FilghtSimulatorApp.Views
             RudderVal = 0;
             ElevatorVal = 0;
         }
-        public void normal()
+        public void Normal()
         {
             double radKn = (Base.Width / 2) - (KnobBase.Width / 2);
             double x = knobPosition.X / radKn;

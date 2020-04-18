@@ -24,8 +24,8 @@
         <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="118" Margin="301.6,52,-26.4,0" VerticalAlignment="Top" Width="418">
             <Views:ViewDashboard x:Name="ViewDashboard" Height="181" Width="418" Loaded="ViewDashboard_Loaded"></Views:ViewDashboard>
         </Viewbox>
-        <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="57" Margin="306.333,-10,0,0" VerticalAlignment="Top" Width="233">
-            <Views:ViewClient x:Name="ViewClient" Loaded="ViewClient_Loaded">
+        <Viewbox Grid.Column="2" HorizontalAlignment="Left" Height="115" Margin="306.6,-10,-6.4,0" VerticalAlignment="Top" Width="275">
+            <Views:ViewClient x:Name="ViewClient" Loaded="ViewClient_Loaded" Height="203" Width="627">
             </Views:ViewClient>
         </Viewbox>
     </Grid>

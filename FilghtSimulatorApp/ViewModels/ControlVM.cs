@@ -17,9 +17,11 @@ namespace FilghtSimulatorApp.ViewModels
             this.model = m;
             this.model.PropertyChanged +=
             delegate (Object sender, PropertyChangedEventArgs e) {
-                NotifyPropertyChanged("VM_" + e.PropertyName);
-};
+            NotifyPropertyChanged("VM_" + e.PropertyName);
+            };
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -27,27 +29,24 @@ namespace FilghtSimulatorApp.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public string VM_throttle
         {
-            set { if (model.throttle != value) model.updateThrottle(value); }
+            set { if (model.throttle != value) { model.updateThrottle(value);} }
         }
 
         public string VM_aileron
         {
-            set { if (model.aileron != value) model.updateAileron(value); }
+            set { if (model.aileron != value) { model.updateAileron(value); } }
         }
 
         public string VM_elevator
         {
-            set { if (model.elevator != value) model.updateElevator(value); }
+            set { if (model.elevator != value) { model.updateElevator(value); } }
         }
 
         public string VM_rudder
         {
-            set { if (model.rudder != value) model.updateRudder(value); }
+            set { if (model.rudder != value) { model.updateRudder(value); } }
         }
     }
 }

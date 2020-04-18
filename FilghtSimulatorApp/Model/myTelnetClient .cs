@@ -10,36 +10,17 @@ namespace FilghtSimulatorApp.Model
 {
     public class MyTelnetClient : ITelnetClient
     {
-        public TcpClient clientSocket;
+        private TcpClient clientSocket;
         private StreamWriter sw;
         private StreamReader sr;
-        private Boolean isConnect=false;
 
         public void connect(string ip, int port)
         {
-            try
-            {
-                if (!isConnect)
-                {
-                    clientSocket = new TcpClient();
-                    var res = clientSocket.BeginConnect(ip, port, null, null);
-                    //Console.WriteLine("connect");
-                    var success = res.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
-                    if (!success)
-                    {
-                        throw new Exception("The connect is failed");
-                    }
-
-                    clientSocket.EndConnect(res);
-                    sw = new StreamWriter(clientSocket.GetStream());
-                    sr = new StreamReader(clientSocket.GetStream());
-                    isConnect = true;
-                }
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
+            clientSocket = new TcpClient();
+            clientSocket.Connect(ip, port);
+            Console.WriteLine("connect");
+            sw = new StreamWriter(clientSocket.GetStream());
+            sr = new StreamReader(clientSocket.GetStream());
         }
 
         public void disconnect()
@@ -47,45 +28,27 @@ namespace FilghtSimulatorApp.Model
             sw.Close();
             sr.Close();
             clientSocket.Close();
-            isConnect = false;
         }
 
         public string read()
-        { 
+        {
             string data = "";
-            
-            try
+            if (sr != null)
             {
-                if (sr != null)
-                {
-                    data = sr.ReadLine(); ;
-                    return data;
-                }
+                data = sr.ReadLine(); ;
                 return data;
             }
+            return data;
 
-            catch(Exception e)
-            {
-                throw e;
-            }
         }
 
         public void write(string command)
         {
-            try
+            if (sw != null)
             {
-                if (sw != null)
-                {
-                    sw.WriteLine(command);
-                    sw.Flush();
-                }
+                sw.WriteLine(command);
+                sw.Flush();
             }
-            catch(Exception e)
-            {
-                throw e;
-            }
-            
-           
         }
     }
 }
