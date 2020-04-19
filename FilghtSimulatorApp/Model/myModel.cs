@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -133,6 +134,11 @@ namespace FilghtSimulatorApp.Model
                                 }
                             }
                         }
+                        catch(IOException)
+                        {
+                            disconnect();
+
+                        }
                         catch (Exception e)
                         {
                             Error = e.Message;
@@ -155,7 +161,8 @@ namespace FilghtSimulatorApp.Model
                     {
                         Error = e.Message;
                     }
-                    Thread.Sleep(250);// read the data in 4Hz
+                    // Read the data in 4Hz.
+                    Thread.Sleep(250);
                 }
             }).Start();
         }
@@ -167,14 +174,29 @@ namespace FilghtSimulatorApp.Model
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            var data = telnetClient.read();
-            if (sw.ElapsedMilliseconds > 10000)
+            try
             {
-                Error = "The server is not responding";
+                var data = telnetClient.read();
+                if (sw.ElapsedMilliseconds > 10000)
+                {
+                    Error = "The server is not responding";
+                    return data;
+                }
+
                 return data;
             }
-
-            return data;
+            catch(IOException e)
+            {
+                Error = e.Message;
+                telnetClient.disconnect();
+                return null;
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+                //telnetClient.disconnect();
+                return null;
+            }
         }
 
         public string Error

@@ -28,9 +28,11 @@ namespace FlightSimulatorApp
             MainViewModel = new MainViewModel(Model);
 
             // Create the startup window
-            MainWindow wnd = new MainWindow();
-            // Do stuff here, e.g. to the window
-            wnd.Title = "FlightGear Simulator";
+            MainWindow wnd = new MainWindow
+            {
+                // Do stuff here, e.g. to the window
+                Title = "FlightGear Simulator"
+            };
             // Show the window
             wnd.Show();
         }
