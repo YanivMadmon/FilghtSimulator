@@ -10,9 +10,9 @@ namespace FilghtSimulatorApp.ViewModels
 {
     public class ControlVM : INotifyPropertyChanged
     {
-        private myModel model;
+        private MyModel model;
 
-        public ControlVM(myModel m)
+        public ControlVM(MyModel m)
         {
             this.model = m;
             this.model.PropertyChanged +=
@@ -31,22 +31,22 @@ namespace FilghtSimulatorApp.ViewModels
         }
         public string VM_throttle
         {
-            set { if (model.throttle != value) { model.updateThrottle(value);} }
+            set { if (model.throttle != value) { model.UpdateThrottle(value);} }
         }
 
         public string VM_aileron
         {
-            set { if (model.aileron != value) { model.updateAileron(value); } }
+            set { if (model.aileron != value) { model.UpdateAileron(value); } }
         }
 
         public string VM_elevator
         {
-            set { if (model.elevator != value) { model.updateElevator(value); } }
+            set { if (model.elevator != value) { model.UpdateElevator(value); } }
         }
 
         public string VM_rudder
         {
-            set { if (model.rudder != value) { model.updateRudder(value); } }
+            set { if (model.rudder != value) { model.UpdateRudder(value); } }
         }
     }
 }

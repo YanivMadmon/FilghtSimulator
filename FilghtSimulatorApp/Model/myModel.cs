@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace FilghtSimulatorApp.Model
 {
-    public class myModel : IModel
+    public class MyModel : IModel
     {
-        ITelnetClient telnetClient;
+        public MyTelnetClient telnetClient;
         volatile Boolean stop;
         public event PropertyChangedEventHandler PropertyChanged;
-        Mutex mut;
+        private Mutex mut;
 
-        private string error="test";
+        private string error;
         private string indicatedHeadingDeg;
         private string gpsIndicatedGroundSpeedKt;
         private string gpsIndicatedVerticalSpeed;
@@ -31,15 +31,23 @@ namespace FilghtSimulatorApp.Model
 
 
 
-        public myModel(ITelnetClient telnetClient)
+        public MyModel(MyTelnetClient telnetClient)
         {
             this.telnetClient = telnetClient;
             this.stop = false; this.mut = new Mutex();
         }
         public void connect(string ip, int port)
         {
-            this.telnetClient.connect(ip, port);
-            this.stop = false;
+            try
+            {
+                this.telnetClient.connect(ip, port);
+                this.stop = false;
+                this.Error = "";
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
         public void disconnect()
         {
@@ -49,83 +57,94 @@ namespace FilghtSimulatorApp.Model
 
         public void start()
         {
-            List<string> nativs = new List<string>();
-            nativs.Add("/instrumentation/heading-indicator/indicated-heading-deg");
-            nativs.Add("/instrumentation/gps/indicated-vertical-speed");
-            nativs.Add("/instrumentation/gps/indicated-ground-speed-kt");
-            nativs.Add("/instrumentation/airspeed-indicator/indicated-speed-kt");
-            nativs.Add("/instrumentation/gps/indicated-altitude-ft");
-            nativs.Add("/instrumentation/attitude-indicator/internal-roll-deg");
-            nativs.Add("/instrumentation/attitude-indicator/internal-pitch-deg");
-            nativs.Add("/instrumentation/altimeter/indicated-altitude-ft");
-            nativs.Add("/position/latitude-deg");
-            nativs.Add("/position/longitude-deg");
+            List<string> nativs = new List<string>
+            {
+                "/instrumentation/heading-indicator/indicated-heading-deg",
+                "/instrumentation/gps/indicated-vertical-speed",
+                "/instrumentation/gps/indicated-ground-speed-kt",
+                "/instrumentation/airspeed-indicator/indicated-speed-kt",
+                "/instrumentation/gps/indicated-altitude-ft",
+                "/instrumentation/attitude-indicator/internal-roll-deg",
+                "/instrumentation/attitude-indicator/internal-pitch-deg",
+                "/instrumentation/altimeter/indicated-altitude-ft",
+                "/position/latitude-deg",
+                "/position/longitude-deg"
+            };
 
             new Thread(delegate ()
             {
+                Console.WriteLine("!!");
                 while (!this.stop)
                 {
+                    //if(!this.stop) {
                     foreach (string s in nativs)
                     {
                         mut.WaitOne();
                         Console.WriteLine("get " + s + "\n");
-                        telnetClient.write("get " + s + "\n");
-
-                        switch (s)
+                        try
                         {
-                            case "/instrumentation/heading-indicator/indicated-heading-deg":
-                                this.IndicatedHeadingDeg = Read();
-                                break;
+                            telnetClient.write("get " + s + "\n");
+                            string temp = Read();
+                            if (temp != "ERR")
+                            {
+                                switch (s)
+                                {
+                                    case "/instrumentation/heading-indicator/indicated-heading-deg":
+                                        this.IndicatedHeadingDeg = Read();
+                                        break;
 
-                            case "/instrumentation/gps/indicated-vertical-speed":
-                                this.GpsIndicatedVerticalSpeed = telnetClient.read();
-                                break;
+                                    case "/instrumentation/gps/indicated-vertical-speed":
+                                        this.GpsIndicatedVerticalSpeed = temp;
+                                        break;
 
-                            case "/instrumentation/gps/indicated-ground-speed-kt":
-                                GpsIndicatedGroundSpeedKt = Read();
-                                break;
+                                    case "/instrumentation/gps/indicated-ground-speed-kt":
+                                        GpsIndicatedGroundSpeedKt = temp;
+                                        break;
 
-                            case "/instrumentation/airspeed-indicator/indicated-speed-kt":
-                                AirspeedIndicatorIndicatedSpeedKt = Read();
-                                break;
+                                    case "/instrumentation/airspeed-indicator/indicated-speed-kt":
+                                        AirspeedIndicatorIndicatedSpeedKt = temp;
+                                        break;
 
-                            case "/instrumentation/gps/indicated-altitude-ft":
-                                GpsIndicatedAltitudeFt = Read();
-                                break;
+                                    case "/instrumentation/gps/indicated-altitude-ft":
+                                        GpsIndicatedAltitudeFt = temp;
+                                        break;
 
-                            case "/instrumentation/attitude-indicator/internal-roll-deg":
-                                AttitudeIndicatorInternalRollDeg = Read();
-                                break;
+                                    case "/instrumentation/attitude-indicator/internal-roll-deg":
+                                        AttitudeIndicatorInternalRollDeg = temp;
+                                        break;
 
-                            case "/instrumentation/attitude-indicator/internal-pitch-deg":
-                                AttitudeIndicatorInternalPitchDeg = Read();
-                                break;
+                                    case "/instrumentation/attitude-indicator/internal-pitch-deg":
+                                        AttitudeIndicatorInternalPitchDeg = temp;
+                                        break;
 
-                            case "/instrumentation/altimeter/indicated-altitude-ft":
-                                AltimeterIndicatedAltitudeFt = Read();
-                                break;
+                                    case "/instrumentation/altimeter/indicated-altitude-ft":
+                                        AltimeterIndicatedAltitudeFt = temp;
+                                        break;
 
-                            case "/position/latitude-deg":
-                                Latitiude = Read();
-                                break;
+                                    case "/position/latitude-deg":
+                                        Latitiude = temp;
+                                        break;
 
-                            case "/position/longitude-deg":
-                                Longitude = Read();
-                                break;
+                                    case "/position/longitude-deg":
+                                        Longitude = temp;
+                                        break;
 
-                            default: 
-                                break;
+                                    default:
+                                        break;
+                                }
+                            }
                         }
-
+                        catch (Exception e)
+                        {
+                            Error = e.Message;
+                        }
                         mut.ReleaseMutex();
-
-
                     }
                     try
                     {
                         double lat = Convert.ToDouble(Latitiude);
                         double longi = Convert.ToDouble(Longitude);
-                        if (longi > 180 || longi < -180 || lat> 90 || lat < -90)
+                        if (longi > 180 || longi < -180 || lat > 90 || lat < -90)
                         {
                             throw new Exception("Invalid coordinate");
                         }
@@ -150,13 +169,13 @@ namespace FilghtSimulatorApp.Model
             Stopwatch sw = new Stopwatch();
             sw.Start();
             var data = telnetClient.read();
-            if(sw.ElapsedMilliseconds>10000)
+            if (sw.ElapsedMilliseconds > 10000)
             {
                 Error = "The server is not responding";
                 return data;
             }
+
             return data;
-            
         }
 
         public string Error
@@ -298,6 +317,8 @@ namespace FilghtSimulatorApp.Model
             }
         }
 
+        public Mutex Mut { get => mut; set => mut = value; }
+
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -311,32 +332,60 @@ namespace FilghtSimulatorApp.Model
         public string rudder;
         public string elevator;
 
-        public void updateThrottle(String value)
+        public void UpdateThrottle(String value)
         {
             throttle = value;
-            telnetClient.write("set /controls/engines/current-engine/throttle " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                telnetClient.write("set /controls/engines/current-engine/throttle " + value + "\n");
+                telnetClient.read();
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
 
-        public void updateAileron(String value)
+        public void UpdateAileron(String value)
         {
             aileron = value;
-            telnetClient.write("set /controls/flight/aileron " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                telnetClient.write("set /controls/flight/aileron " + value + "\n");
+                telnetClient.read();
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
 
-        public void updateRudder(String value)
+        public void UpdateRudder(String value)
         {
             rudder = value;
-            telnetClient.write("set /controls/flight/rudder " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                telnetClient.write("set /controls/flight/rudder " + value + "\n");
+                telnetClient.read();
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
 
-        public void updateElevator(String value)
+        public void UpdateElevator(String value)
         {
             elevator = value;
-            telnetClient.write("set /controls/flight/elevator " + value + "\n");
-            telnetClient.read();
+            try
+            {
+                telnetClient.write("set /controls/flight/elevator " + value + "\n");
+                telnetClient.read();
+            }
+            catch (Exception e)
+            {
+                Error = e.Message;
+            }
         }
     }
 }

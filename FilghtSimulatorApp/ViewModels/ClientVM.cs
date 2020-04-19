@@ -10,8 +10,8 @@ namespace FilghtSimulatorApp.ViewModels
 {
     public class ClientVM : INotifyPropertyChanged
     {
-        public myModel model;
-        public ClientVM(myModel m)
+        public MyModel model;
+        public ClientVM(MyModel m)
         {
             this.model = m;
             this.model.PropertyChanged +=

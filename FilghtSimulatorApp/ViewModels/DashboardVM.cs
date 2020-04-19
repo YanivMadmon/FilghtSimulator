@@ -12,8 +12,8 @@ namespace FilghtSimulatorApp.ViewModels
 
       public class DashboardVM : INotifyPropertyChanged
     {
-        public myModel model;
-       public DashboardVM(myModel m)
+        public MyModel model;
+       public DashboardVM(MyModel m)
         {
             this.model = m;
             this.model.PropertyChanged +=

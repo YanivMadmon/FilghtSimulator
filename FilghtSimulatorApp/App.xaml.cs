@@ -24,7 +24,7 @@ namespace FlightSimulatorApp
             //initialize communication
             // TCPclient tcpclient = new...
 
-            myModel Model = new myModel(new MyTelnetClient());
+            MyModel Model = new MyModel(new MyTelnetClient());
             MainViewModel = new MainViewModel(Model);
 
             // Create the startup window

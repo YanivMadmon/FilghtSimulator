@@ -10,8 +10,8 @@ namespace FilghtSimulatorApp.ViewModels
 {
     public class MapVM : INotifyPropertyChanged
     {
-        public myModel model;
-        public MapVM(myModel m)
+        public MyModel model;
+        public MapVM(MyModel m)
         {
             this.model = m;
             this.model.PropertyChanged +=
