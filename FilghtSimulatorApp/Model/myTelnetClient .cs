@@ -15,7 +15,7 @@ namespace FilghtSimulatorApp.Model
         private StreamReader sr;
         private Boolean isConnect = false;
 
-        public void connect(string ip, int port)
+        public void Connect(string ip, int port)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace FilghtSimulatorApp.Model
             }
         }
 
-        public void disconnect()
+        public void Disconnect()
         {
             sw.Close();
             sr.Close();
@@ -49,7 +49,7 @@ namespace FilghtSimulatorApp.Model
             isConnect = false;
         }
 
-        public string read()
+        public string Read()
         {
             string data = "";
             try
@@ -67,7 +67,7 @@ namespace FilghtSimulatorApp.Model
             return data;
         }
 
-        public void write(string command)
+        public void Write(string command)
         {
             try
             {

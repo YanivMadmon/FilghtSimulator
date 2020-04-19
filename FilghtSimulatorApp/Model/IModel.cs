@@ -9,9 +9,9 @@ namespace FilghtSimulatorApp.Model
 {
     public interface IModel : INotifyPropertyChanged
     {
-        void connect(string ip, int port);
-        void disconnect();
-        void start();
+        void Connect(string ip, int port);
+        void Disconnect();
+        void Start();
 
         string IndicatedHeadingDeg { get; set; }
         string GpsIndicatedVerticalSpeed { get; set; }

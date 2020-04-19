@@ -37,11 +37,11 @@ namespace FilghtSimulatorApp.Model
             this.telnetClient = telnetClient;
             this.stop = false; this.mut = new Mutex();
         }
-        public void connect(string ip, int port)
+        public void Connect(string ip, int port)
         {
             try
             {
-                this.telnetClient.connect(ip, port);
+                this.telnetClient.Connect(ip, port);
                 this.stop = false;
                 this.Error = "";
             }
@@ -50,13 +50,13 @@ namespace FilghtSimulatorApp.Model
                 Error = e.Message;
             }
         }
-        public void disconnect()
+        public void Disconnect()
         {
             this.stop = true;
-            telnetClient.disconnect();
+            telnetClient.Disconnect();
         }
 
-        public void start()
+        public void Start()
         {
             List<string> nativs = new List<string>
             {
@@ -83,7 +83,7 @@ namespace FilghtSimulatorApp.Model
                         Console.WriteLine("get " + s + "\n");
                         try
                         {
-                            telnetClient.write("get " + s + "\n");
+                            telnetClient.Write("get " + s + "\n");
                             string temp = Read();
                             if (temp != "ERR")
                             {
@@ -136,7 +136,7 @@ namespace FilghtSimulatorApp.Model
                         }
                         catch(IOException)
                         {
-                            disconnect();
+                            Disconnect();
 
                         }
                         catch (Exception e)
@@ -176,7 +176,7 @@ namespace FilghtSimulatorApp.Model
             sw.Start();
             try
             {
-                var data = telnetClient.read();
+                var data = telnetClient.Read();
                 if (sw.ElapsedMilliseconds > 10000)
                 {
                     Error = "The server is not responding";
@@ -188,7 +188,7 @@ namespace FilghtSimulatorApp.Model
             catch(IOException e)
             {
                 Error = e.Message;
-                telnetClient.disconnect();
+                telnetClient.Disconnect();
                 return null;
             }
             catch (Exception e)
@@ -358,13 +358,13 @@ namespace FilghtSimulatorApp.Model
             throttle = value;
             try
             {
-                telnetClient.write("set /controls/engines/current-engine/throttle " + value + "\n");
-                telnetClient.read();
+                telnetClient.Write("set /controls/engines/current-engine/throttle " + value + "\n");
+                telnetClient.Read();
             }
             catch (IOException e)
             {
                 Error = e.Message;
-                telnetClient.disconnect();
+                telnetClient.Disconnect();
             }
             catch (Exception e)
             {
@@ -377,13 +377,13 @@ namespace FilghtSimulatorApp.Model
             aileron = value;
             try
             {
-                telnetClient.write("set /controls/flight/aileron " + value + "\n");
-                telnetClient.read();
+                telnetClient.Write("set /controls/flight/aileron " + value + "\n");
+                telnetClient.Read();
             }
             catch (IOException e)
             {
                 Error = e.Message;
-                telnetClient.disconnect();
+                telnetClient.Disconnect();
             }
             catch (Exception e)
             {
@@ -396,13 +396,13 @@ namespace FilghtSimulatorApp.Model
             rudder = value;
             try
             {
-                telnetClient.write("set /controls/flight/rudder " + value + "\n");
-                telnetClient.read();
+                telnetClient.Write("set /controls/flight/rudder " + value + "\n");
+                telnetClient.Read();
             }
             catch (IOException e)
             {
                 Error = e.Message;
-                telnetClient.disconnect();
+                telnetClient.Disconnect();
             }
             catch (Exception e)
             {
@@ -415,13 +415,13 @@ namespace FilghtSimulatorApp.Model
             elevator = value;
             try
             {
-                telnetClient.write("set /controls/flight/elevator " + value + "\n");
-                telnetClient.read();
+                telnetClient.Write("set /controls/flight/elevator " + value + "\n");
+                telnetClient.Read();
             }
             catch(IOException e)
             {
                 Error = e.Message;
-                telnetClient.disconnect();
+                telnetClient.Disconnect();
             }
             catch (Exception e)
             {

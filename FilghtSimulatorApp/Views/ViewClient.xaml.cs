@@ -35,8 +35,8 @@ namespace FilghtSimulatorApp.Views
         {
             try
             {
-                cvm.model.connect(IPTextBox.Text, Int32.Parse(PortTextBox.Text));
-                cvm.model.start();
+                cvm.model.Connect(IPTextBox.Text, Int32.Parse(PortTextBox.Text));
+                cvm.model.Start();
             }
             catch(Exception exp)
             {
@@ -61,7 +61,7 @@ namespace FilghtSimulatorApp.Views
 
         private void DisconnectBottom_Click(object sender, RoutedEventArgs e)
         {
-            cvm.model.disconnect();
+            cvm.model.Disconnect();
         }
     }
 }
