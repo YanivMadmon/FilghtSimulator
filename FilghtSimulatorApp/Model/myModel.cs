@@ -361,6 +361,11 @@ namespace FilghtSimulatorApp.Model
                 telnetClient.write("set /controls/engines/current-engine/throttle " + value + "\n");
                 telnetClient.read();
             }
+            catch (IOException e)
+            {
+                Error = e.Message;
+                telnetClient.disconnect();
+            }
             catch (Exception e)
             {
                 Error = e.Message;
@@ -374,6 +379,11 @@ namespace FilghtSimulatorApp.Model
             {
                 telnetClient.write("set /controls/flight/aileron " + value + "\n");
                 telnetClient.read();
+            }
+            catch (IOException e)
+            {
+                Error = e.Message;
+                telnetClient.disconnect();
             }
             catch (Exception e)
             {
@@ -389,6 +399,11 @@ namespace FilghtSimulatorApp.Model
                 telnetClient.write("set /controls/flight/rudder " + value + "\n");
                 telnetClient.read();
             }
+            catch (IOException e)
+            {
+                Error = e.Message;
+                telnetClient.disconnect();
+            }
             catch (Exception e)
             {
                 Error = e.Message;
@@ -402,6 +417,11 @@ namespace FilghtSimulatorApp.Model
             {
                 telnetClient.write("set /controls/flight/elevator " + value + "\n");
                 telnetClient.read();
+            }
+            catch(IOException e)
+            {
+                Error = e.Message;
+                telnetClient.disconnect();
             }
             catch (Exception e)
             {
