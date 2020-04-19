@@ -33,8 +33,15 @@ namespace FilghtSimulatorApp.Views
 
         private void ConnectBottom_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
                 cvm.model.connect(IPTextBox.Text, Int32.Parse(PortTextBox.Text));
-                cvm.model.start();   
+                cvm.model.start();
+            }
+            catch(Exception exp)
+            {
+                cvm.model.Error = exp.Message;
+            }
         }
         public void Init()
         {

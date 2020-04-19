@@ -23,7 +23,6 @@ namespace FilghtSimulatorApp.Model
                 {
                     clientSocket = new TcpClient();
                     var res = clientSocket.BeginConnect(ip, port, null, null);
-                    //Console.WriteLine("connect");
                     var success = res.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
                     if (!success)
                     {

@@ -76,7 +76,6 @@ namespace FilghtSimulatorApp.Model
                 Console.WriteLine("!!");
                 while (!this.stop)
                 {
-                    //if(!this.stop) {
                     foreach (string s in nativs)
                     {
                         mut.WaitOne();
@@ -90,7 +89,7 @@ namespace FilghtSimulatorApp.Model
                                 switch (s)
                                 {
                                     case "/instrumentation/heading-indicator/indicated-heading-deg":
-                                        this.IndicatedHeadingDeg = Read();
+                                        this.IndicatedHeadingDeg = temp;
                                         break;
 
                                     case "/instrumentation/gps/indicated-vertical-speed":
